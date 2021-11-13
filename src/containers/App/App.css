@@ -1,0 +1,79 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-size: 0.95rem;
+  background: #F6A89E fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: linear-gradient(102.7deg, #d1d0ff, #e4bbff, #ffdae3, #ffddfc)
+    fixed; */
+}
+
+.App {
+  width: 500px;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #F9F3E5;
+  border: 4px solid #33322E;
+  border-radius: 10px;
+  padding: 35px 0px;
+}
+
+.header h1 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  border-bottom: 4px solid #33322E;
+  padding-bottom: 15px;
+}
+
+.form__add {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 20px 0 0 0;
+  padding-bottom: 15px;
+}
+
+.form__add input {
+  width: 75%;
+  padding: 15px;
+  margin-right: 15px;
+}
+
+.form__add button {
+  padding: 5px 20px;
+  background: #FFF0EE;
+  border: 3px solid #33322E;
+  border-radius: 1rem;
+  filter: drop-shadow(2px 2px 0px #33322E);
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.form__add button:hover {
+  filter: drop-shadow(0px 0px 0px #33322E);
+}
+
+input, textarea, button {
+  background: transparent;
+  border-radius: 0;
+  font-size: 0.95rem;
+  outline: 0;
+}
+
+.task__list {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  overflow: scroll;
+}

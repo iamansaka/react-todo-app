@@ -3,10 +3,37 @@ import Task from '../../components/Task/Task';
 import './App.css';
 
 function App() {
+  // States
+  const [tasks, setTasks] = useState([
+    { done: true, text: "Nourrir le chat" },
+    { done: false, text: "Faire du ReactJs" },
+    { done: false, text: "Aller faire du jogging" },
+  ]);
 
-  const [todo, setTodo] = useState([
-    {}
-  ])
+  // Methodes
+  const deleteTodoHandler = index => {
+    const newTodos = [...tasks];
+    newTodos.splice(index, 1);
+    setTasks(newTodos);
+    // console.log(index);
+  }
+  
+  const doneTodoHandler = index => {
+    const newTodos = [...tasks];
+    newTodos[index].done = !newTodos[index].done;
+    setTasks(newTodos)
+  }
+
+  // Variables
+  let listTasks = tasks.map((task, index) => (
+    <Task
+      key={ index }
+      done={ task.done }
+      name={ task.text }
+      deleteTodo={() => deleteTodoHandler(index)}
+      doneTodo={() => doneTodoHandler(index)}
+    />
+  ))
 
   return (
     <div className="App">
@@ -18,12 +45,10 @@ function App() {
         <button type="submit">Ajouter</button>
       </form>
       <div className="task__list">
-        <Task name="Faire du React" />
-        <Task name="Nourrir le chat" />
-        <Task name="Faire les courses" />
+        { listTasks }
       </div>
     </div>
-  );
+  )
 }
 
 export default App;

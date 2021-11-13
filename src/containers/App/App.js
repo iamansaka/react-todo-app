@@ -6,9 +6,10 @@ function App() {
   // States
   const [tasks, setTasks] = useState([
     { done: true, text: "Nourrir le chat" },
-    { done: false, text: "Faire du ReactJs" },
+    { done: true, text: "Faire du ReactJs" },
     { done: false, text: "Aller faire du jogging" },
   ]);
+  const [valueInput, setValueInput] = useState('');
 
   // Methodes
   const deleteTodoHandler = index => {
@@ -24,6 +25,20 @@ function App() {
     setTasks(newTodos)
   }
 
+  const handleSubmitTask = e => {
+    e.preventDefault();
+    const addTodo = {
+      done: false,
+      text: valueInput
+    }
+    setTasks([...tasks, addTodo])
+    setValueInput('');
+  }
+
+  const handleChange = e => {
+    setValueInput(e.target.value);
+  }
+
   // Variables
   let listTasks = tasks.map((task, index) => (
     <Task
@@ -33,15 +48,15 @@ function App() {
       deleteTodo={() => deleteTodoHandler(index)}
       doneTodo={() => doneTodoHandler(index)}
     />
-  ))
+  )).reverse();
 
   return (
     <div className="App">
       <header className="header">
         <h1>Todos list</h1>
       </header>
-      <form className="form__add">
-        <input type="text" placeholder="Ajouter une tâche" />
+      <form className="form__add" onSubmit={(e) => handleSubmitTask(e)}>
+        <input type="text" placeholder="Ajouter une tâche" value={valueInput} onChange={(e) => handleChange(e) } />
         <button type="submit">Ajouter</button>
       </form>
       <div className="task__list">

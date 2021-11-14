@@ -7,7 +7,7 @@ export default function Task(props) {
     return (
         <div className={styles.task}>
             <div className={styles.task__content} onClick={ props.doneTodo }>
-                <img src={ props.done ? checkDone : check } onClick={ props.doneTodo }/>
+                <img src={ props.done ? checkDone : check } onClick={ props.doneTodo } alt="checkbox"/>
                 <p className={ props.done ? styles.done : ""}>{props.name}</p>
             </div>
             <div onClick={ props.deleteTodo }>
